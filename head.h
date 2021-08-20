@@ -16,9 +16,16 @@ struct infor {
 	long num;            
 	char name[50];       
 };
+/* struct all_scores{
+	long num;
+	char name[50];
+	int score[10];
 
-void input_zyh(struct student stu[60],struct infor s1[50]);
-void mod_zyh(struct student stu[60]);
-void  comp_czl(struct student stu[60],struct infor s1[50]);
-void  bubble_sort(struct student stu[60],int n);
-void outp_zyh(struct student stu[60]);
+
+}; */
+
+void input_zyh(struct student stu[],struct infor s1[]);
+void mod_zyh(struct student stu[]);
+void  comp_czl(struct student stu[],struct infor s1[]);
+void  bubble_sort(struct student stu[],int n);
+void outp_zyh(struct student stu[]);

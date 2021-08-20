@@ -1,5 +1,5 @@
 #include"head.h"
-void input_zyh(struct student stu[60],struct infor s1[50])//文件导入
+void input_zyh(struct student stu[],struct infor s1[])//文件导入
 {		printf("请输入OJ实验成绩文档\n");
 		char path[200];
 		gets(path);
@@ -23,7 +23,7 @@ void input_zyh(struct student stu[60],struct infor s1[50])//文件导入
 		fp=fopen(path1,"r");
 		if (fp==NULL)
 		puts("error");
-		while(fscanf(fp,"%d %s",&s1[n].num,s1[n].name)!=EOF)
+		while(fscanf(fp,"%ld %s",&s1[n].num,s1[n].name)!=EOF)
             {
                 n++; 
             }
@@ -32,8 +32,8 @@ void input_zyh(struct student stu[60],struct infor s1[50])//文件导入
 		
 }
 
-void mod_zyh(struct student stu[60])//调整全错学生成绩
-{int t;//检索全错学生变量
+void mod_zyh(struct student stu[])//调整全错学生成绩
+{int t;//检索全错学生数量
 	for(t=0;t<max;t++){
 	
 	if(stu[t].mark==0){
@@ -43,7 +43,7 @@ void mod_zyh(struct student stu[60])//调整全错学生成绩
 
 }
 
-void  comp_czl(struct student stu[60],struct infor s1[50])
+void  comp_czl(struct student stu[],struct infor s1[])
 {
 	int i,j,a,t;
 	char c[50];
@@ -66,7 +66,7 @@ void  comp_czl(struct student stu[60],struct infor s1[50])
 		}
 	}
 }
-void  bubble_sort(struct student stu[60],int n)
+void  bubble_sort(struct student stu[],int n)
 {   int times;
     int i;
     int temp;
@@ -88,7 +88,7 @@ void  bubble_sort(struct student stu[60],int n)
 
 }
 
-void outp_zyh(struct student stu[60])
+void outp_zyh(struct student stu[])
 {int i;
 	FILE *fp1=fopen("output.txt","w");
 	 for(i=0;i<(max);i++){
