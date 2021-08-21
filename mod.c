@@ -1,99 +1,81 @@
 #include"head.h"
-void input_zyh(struct student stu[],struct infor s1[])//文件导入
-{		printf("请输入OJ实验成绩文档\n");
+
+void input_zyh2(struct term s0[])
+{
+	printf("请输入包含所有学生信息的文档\n");
 		char path[200];
 		gets(path);
-		FILE *fp=fopen(path,"r"); 
-			if (fp==NULL)
-				{
-					puts("error");
-					
-				}
-			while(fscanf(fp,"%d %ld %s %d %d",&stu[max].rank,&stu[max].num,stu[max].name,&stu[max].sole,&stu[max].mark)!=EOF)
-			        {		
-			          max++;
-					  
-					  }
-			 
-		fclose(fp);
-
-		printf("请输入包含所有学生信息的文档\n");
-		char path1[200];
-		gets(path1);
-		fp=fopen(path1,"r");
+		FILE *fp=fopen(path,"r");
 		if (fp==NULL)
 		puts("error");
-		while(fscanf(fp,"%ld %s",&s1[n].num,s1[n].name)!=EOF)
+		while(fscanf(fp,"%ld %s",&s0[n].num,s0[n].name)!=EOF)
             {
                 n++; 
             }
 	    fclose(fp);
         
-		
 }
 
-void mod_zyh(struct student stu[])//调整全错学生成绩
-{int t;//检索全错学生数量
-	for(t=0;t<max;t++){
-	
-	if(stu[t].mark==0){
-		stu[t].mark=50;
-		}
-}
-
-}
-
-void  comp_czl(struct student stu[],struct infor s1[])
+void load_zyh(struct term s0[], struct student stu[])
 {
-	int i,j,a,t;
-	char c[50];
-	for (i = 0; i < n; i++)
+	
+	int j, k = 0;
+	printf("请输入本学期OJ实验总数\n");
+	scanf("%d", &t);
+	for (int i = 0; i < t; i++)
 	{
-		a = 0;
-		for (j = 0; j < max; j++)
+		max=0;
+		printf("请输入第%d次OJ实验成绩文档的路径\n", i+1);
+		char path[200];
+		gets(path);					//读取路径
+		FILE *fp = fopen(path, "r");
+		if (fp == NULL)
 		{
-			if (s1[i].num == stu[j].num)
-				a++;
+			puts("error");
 		}
-		if (a == 0)
+		while (fscanf(fp, "%d %ld %s %d %d", &stu[max].rank, &stu[max].num, stu[max].name, &stu[max].sole, &stu[max].mark) != EOF)
 		{
-			stu[max].num = s1[i].num;
-			stu[max].sole =0;
-			stu[max].mark = 0;
-			stu[max].rank = max + 1;
-			strcpy(stu[max].name, s1[i].name);
 			max++;
 		}
+
+		int w; //检索全错学生数量
+		for (w = 0; w < max; w++)  //调整分值
+		{
+
+			if (stu[w].mark == 0)
+			{
+				stu[w].mark = 50;
+			}
+		}
+
+		for (j = 0; j < max; j++)
+		{
+			for (k = 0; k < n; k++)
+			{
+				if (stu[j].num == s0[k].num)
+				{
+					s0[k].score[i] = stu[j].mark;
+					break;
+				}
+
+			}
+		}
+		fclose(fp);
 	}
 }
-void  bubble_sort(struct student stu[],int n)
-{   int times;
-    int i;
-    int temp;
-    for(times=0;times<n-1;times++)
-    {   for(i=0;i<n-1-times;i++)
-        {
-            if(stu[i].num>stu[i+1].num)
-            {
-                struct student t={};
-                t=stu[i];
-                stu[i]=stu[i+1];
-                stu[i+1]=t;
 
-
-            }
-        }
-
-    }
-
-}
-
-void outp_zyh(struct student stu[])
-{int i;
-	FILE *fp1=fopen("output.txt","w");
-	 for(i=0;i<(max);i++){
-		fprintf(fp1,"%d\t%s\t%ld\t%d\t%d\n",stu[i].rank,stu[i].name,stu[i].num,stu[i].mark,stu[i].sole);
-    	
-	}
-	fclose(fp1);
+void out_zyh2(struct term s0[]){
+	int i, m;
+	FILE *fp = fopen("output.txt", "w");
+	
+		for (i = 0; i < n; i++)
+		{
+			fprintf(fp, "%ld\t", s0[i].num);
+			for(m=0;m<t;m++){
+			fprintf(fp, "%d\t", s0[i].score[m]);	
+			}
+			fprintf(fp, "\n");
+		}
+	
+	fclose(fp);
 }

@@ -1,5 +1,6 @@
 extern  int max;//oj文档学生人数
 extern  int n;//全部学生数
+extern  int t;//oj实验数
 #include<stdio.h>
 #include <string.h>
 #include<stdlib.h>
@@ -12,20 +13,16 @@ struct student {
 	char name[50];  //姓名  
 };
 
-struct infor {
-	long num;            
-	char name[50];       
-};
-/* struct all_scores{
+
+struct term{
 	long num;
 	char name[50];
-	int score[10];
+	int score[30];
 
 
-}; */
+};
 
-void input_zyh(struct student stu[],struct infor s1[]);
-void mod_zyh(struct student stu[]);
-void  comp_czl(struct student stu[],struct infor s1[]);
-void  bubble_sort(struct student stu[],int n);
-void outp_zyh(struct student stu[]);
+
+void input_zyh2(struct term s0[]);
+void load_zyh(struct term s0[],struct student stu[]);
+void out_zyh2(struct term s0[]);
