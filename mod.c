@@ -1,35 +1,34 @@
-#include"head.h"
+#include "head.h"
 
-void input_zyh2(struct term s0[])
+void input_zyh(struct term s0[])
 {
 	printf("请输入包含所有学生信息的文档\n");
-		char path[200];
-		gets(path);
-		FILE *fp=fopen(path,"r");
-		if (fp==NULL)
+	char path[200];
+	gets(path);
+	FILE *fp = fopen(path, "r");
+	if (fp == NULL)
 		puts("error");
-		while(fscanf(fp,"%ld %s",&s0[n].num,s0[n].name)!=EOF)
-            {
-                n++; 
-               // printf("%d\n",n);
-            }
-	    fclose(fp);
-        
+	while (fscanf(fp, "%ld %s", &s0[n].num, s0[n].name) != EOF)
+	{
+		n++;
+		
+	}
+	fclose(fp);
 }
 
 void load_zyh(struct term s0[], struct student stu[])
 {
-	
-	int i,j, k = 0;
+
+	int i, j, k = 0;
 	printf("请输入本学期OJ实验总数\n");
 	scanf("%d", &t);
-	getchar();
+	fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
 	for (i = 0; i < t; i++)
 	{
-		max=0;
-		printf("请输入第%d次OJ实验成绩文档的路径\n", i+1);
+		max = 0;
+		printf("请输入第%d次OJ实验成绩文档的路径\n", i + 1);
 		char path[200];
-		gets(path);					//读取路径
+		gets(path); //读取路径
 		FILE *fp = fopen(path, "r");
 		if (fp == NULL)
 		{
@@ -40,8 +39,8 @@ void load_zyh(struct term s0[], struct student stu[])
 			max++;
 		}
 
-		int w; //检索全错学生数量
-		for (w = 0; w < max; w++)  //调整分值
+		int w;					  //检索全错学生数量
+		for (w = 0; w < max; w++) //调整分值
 		{
 
 			if (stu[w].mark == 0)
@@ -59,25 +58,26 @@ void load_zyh(struct term s0[], struct student stu[])
 					s0[k].score[i] = stu[j].mark;
 					break;
 				}
-
 			}
 		}
 		fclose(fp);
 	}
 }
 
-void out_zyh2(struct term s0[]){
+void out_zyh(struct term s0[])
+{
 	int i, m;
 	FILE *fp = fopen("output.txt", "w");
-	
-		for (i = 0; i < n; i++)
+
+	for (i = 0; i < n; i++)
+	{
+		fprintf(fp, "%ld\t", s0[i].num);
+		for (m = 0; m < t; m++)
 		{
-			fprintf(fp, "%ld\t", s0[i].num);
-			for(m=0;m<t;m++){
-			fprintf(fp, "%d\t", s0[i].score[m]);	
-			}
-			fprintf(fp, "\n");
+			fprintf(fp, "%d\t", s0[i].score[m]);
 		}
-	
+		fprintf(fp, "\n");
+	}
+
 	fclose(fp);
 }

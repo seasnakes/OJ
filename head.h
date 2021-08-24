@@ -23,6 +23,6 @@ struct term{
 };
 
 
-void input_zyh2(struct term s0[]);
+void input_zyh(struct term s0[]);
 void load_zyh(struct term s0[],struct student stu[]);
-void out_zyh2(struct term s0[]);
+void out_zyh(struct term s0[]);
