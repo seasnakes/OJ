@@ -11,6 +11,7 @@ void input_zyh2(struct term s0[])
 		while(fscanf(fp,"%ld %s",&s0[n].num,s0[n].name)!=EOF)
             {
                 n++; 
+               // printf("%d\n",n);
             }
 	    fclose(fp);
         
@@ -19,10 +20,11 @@ void input_zyh2(struct term s0[])
 void load_zyh(struct term s0[], struct student stu[])
 {
 	
-	int j, k = 0;
+	int i,j, k = 0;
 	printf("请输入本学期OJ实验总数\n");
 	scanf("%d", &t);
-	for (int i = 0; i < t; i++)
+	getchar();
+	for (i = 0; i < t; i++)
 	{
 		max=0;
 		printf("请输入第%d次OJ实验成绩文档的路径\n", i+1);
