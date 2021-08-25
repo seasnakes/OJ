@@ -20,7 +20,7 @@ void load_zyh(struct term s0[], struct student stu[])
 {
 
 	int i, j, k = 0;
-	printf("请输入本学期OJ实验总数\n");
+	printf("请输入本学期OJ实验个数\n");
 	scanf("%d", &t);
 	fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
 	for (i = 0; i < t; i++)

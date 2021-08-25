@@ -18,6 +18,7 @@ struct term{
 	long num;
 	char name[50];
 	int score[30];
+	
 
 
 };
