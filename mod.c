@@ -61,6 +61,7 @@ void load_zyh(struct term s0[], struct student stu[])
 			}
 		}
 		fclose(fp);
+		system("clear");
 	}
 }
 
