@@ -11,7 +11,6 @@ void input_zyh(struct term s0[])
 	while (fscanf(fp, "%ld %s", &s0[n].num, s0[n].name) != EOF)
 	{
 		n++;
-		
 	}
 	fclose(fp);
 }
@@ -64,21 +63,54 @@ void load_zyh(struct term s0[], struct student stu[])
 		system("clear");
 	}
 }
+void final_score(struct term s0[])
+{
+	int b; //第几个学生
+	int k; //第几次oj实验
+	int p[20] = {0};
+	for (b = 0; b < t; b++)
+	{
+		printf("请输入第%d次OJ实验占总期末总评比例（%%）\n", b + 1);
+		scanf("%d", &p[b]);
+	}
+	for (b = 0; b < n; b++)
+	{
+		for (k = 0; k < t; k++)
+		{
+			s0[b].finalScore += s0[b].score[k] * p[k] * 0.01;
+		}
+	}
+}
+void average_zyh(struct term s0[])
+{
+	int b; //第几个学生
 
+	for (b = 0; b < n; b++)
+	{
+		average += s0[b].finalScore / n;
+	}
+}
 void out_zyh(struct term s0[])
 {
 	int i, m;
 	FILE *fp = fopen("output.txt", "w");
-
+	int j = 0;
+	fprintf(fp, "%-13s\t%-3s\t", "学号", "姓名");
+	for (j = 0; j < t; j++)
+	{
+		fprintf(fp, "第%d次oj实验成绩\t", j + 1);
+	}
+	fprintf(fp, "总成绩\n");
 	for (i = 0; i < n; i++)
 	{
-		fprintf(fp, "%ld\t", s0[i].num);
+
+		fprintf(fp, "%ld\t%-3s\t", s0[i].num, s0[i].name);
 		for (m = 0; m < t; m++)
 		{
-			fprintf(fp, "%d\t", s0[i].score[m]);
+			fprintf(fp, "%-12d\t", s0[i].score[m]);
 		}
-		fprintf(fp, "\n");
+		fprintf(fp, "%.0f\n", s0[i].finalScore);
 	}
-
+	fprintf(fp, "全部学生的总评平均分为%.2f分\n", average);
 	fclose(fp);
 }
