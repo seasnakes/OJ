@@ -63,7 +63,7 @@ void load_zyh(struct term s0[], struct student stu[])
 		system("clear");
 	}
 }
-void final_score(struct term s0[])
+void final_score_zyh(struct term s0[])
 {
 	int b; //第几个学生
 	int k; //第几次oj实验

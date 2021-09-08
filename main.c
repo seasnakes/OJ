@@ -8,9 +8,10 @@ int main(void){
     struct student stu[50];
 	input_zyh(s0);
     load_zyh(s0,stu);
-    final_score(s0);
+    final_score_zyh(s0);
     average_zyh(s0);
     out_zyh(s0);
+    printf("汇总已完成，请在output.txt中查看。");
   
     return 0;
 }
