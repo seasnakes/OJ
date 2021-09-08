@@ -114,3 +114,76 @@ void out_zyh(struct term s0[])
 	fprintf(fp, "全部学生的总评平均分为%.2f分\n", average);
 	fclose(fp);
 }
+void find_cmy(struct term s0[])
+{
+	int i, p;
+	int a = 0;
+	long findnum;
+	char name[100];
+	char c;
+	do
+	{
+
+		printf("请选择你想要查询方式\n");
+		printf("输入1 以学号方式查询\n");
+		printf("输入2 以姓名方式查询\n");
+		scanf("%d", &p);
+		switch (p)
+		{
+		case 1:
+			printf("请输入要查询学生的学号:");
+			scanf("%ld", &findnum);
+
+			for (i = 0; i < n; i++)
+			{
+				if (findnum - s0[i].num == 0)
+				{
+					printf("学号:");
+					printf("%ld\n", s0[i].num);
+					printf("姓名:");
+					printf("%s\n", s0[i].name);
+					printf("总评得分");
+					printf("%.0f\n", s0[i].finalScore);
+					a = 1;
+					break;
+				}
+			}
+			if (a == 0)
+			{
+				printf("没有该学生学号!!!\n");
+			}
+
+			
+			break;
+
+		case 2:
+			printf("请输入要查询学生的姓名:\n");
+			scanf("%s", name);
+			for (i = 0; i < n; i++)
+			{
+				if (strcmp(name, s0[i].name) == 0)
+				{
+
+					printf("学号:");
+					printf("%ld\n", s0[i].num);
+					printf("姓名:");
+					printf("%s\n", s0[i].name);
+					printf("总评得分");
+					printf("%.0f\n", s0[i].finalScore);
+					a = 1;
+					break;
+				}
+			}
+			if (a == 0)
+			{
+				printf("没有该学生学号!!!\n");
+			}
+
+			break;
+		}
+		fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
+		printf("是否继续查询？y/n\n");
+		scanf("%c",&c);
+
+	} while (c!='n');
+}

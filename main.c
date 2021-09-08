@@ -11,7 +11,8 @@ int main(void){
     final_score_zyh(s0);
     average_zyh(s0);
     out_zyh(s0);
+    system("clear");
     printf("汇总已完成，请在output.txt中查看。");
-  
+    find_cmy(s0);
     return 0;
 }
