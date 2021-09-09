@@ -32,5 +32,5 @@ void load_zyh(struct term s0[],struct student stu[]);
 void final_score_zyh(struct term s0[]);
 void average_zyh(struct term s0[]);
 void out_zyh(struct term s0[]);
-void find_cmy(struct term s0[]);
+void find_zyh(struct term s0[]);
 

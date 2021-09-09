@@ -4,7 +4,8 @@ void input_zyh(struct term s0[])
 {
 	printf("请输入包含所有学生信息的文档\n");
 	char path[200];
-	gets(path);
+	scanf("%s",path);
+	fflush(stdin);
 	FILE *fp = fopen(path, "r");
 	if (fp == NULL)
 		puts("error");
@@ -13,21 +14,39 @@ void input_zyh(struct term s0[])
 		n++;
 	}
 	fclose(fp);
+	system("clear");
 }
 
 void load_zyh(struct term s0[], struct student stu[])
 {
-
+	
 	int i, j, k = 0;
+	while(1){
 	printf("请输入本学期OJ实验个数\n");
-	scanf("%d", &t);
-	fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
+	if(!scanf("%d",&t))
+	{  
+		
+		system("clear");
+		printf("请重新输入：\n");
+		fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
+		
+	}
+	else {
+		system("clear");
+		fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
+		break;
+	
+	}
+
+    }
+	
 	for (i = 0; i < t; i++)
 	{
 		max = 0;
-		printf("请输入第%d次OJ实验成绩文档的路径\n", i + 1);
+		printf("请输入第%d次OJ实验成绩文档的路径\n",i+1);
 		char path[200];
-		gets(path); //读取路径
+		scanf("%s",path); //读取路径
+		fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
 		FILE *fp = fopen(path, "r");
 		if (fp == NULL)
 		{
@@ -69,17 +88,19 @@ void final_score_zyh(struct term s0[])
 	int k; //第几次oj实验
 	int p[20] = {0};
 	for (b = 0; b < t; b++)
-	{
-		printf("请输入第%d次OJ实验占总期末总评比例（%%）\n", b + 1);
+	{	
+		printf("请输入第%d次OJ实验占总期末总评比例（%%）\n",b+1);
 		scanf("%d", &p[b]);
-	}
-	for (b = 0; b < n; b++)
-	{
-		for (k = 0; k < t; k++)
+	}	
+		
+		for (b = 0; b < n; b++)
 		{
-			s0[b].finalScore += s0[b].score[k] * p[k] * 0.01;
+			for (k = 0; k < t; k++)
+			{
+				s0[b].finalScore += s0[b].score[k] * p[k] * 0.01;
+			}
 		}
-	}
+	
 }
 void average_zyh(struct term s0[])
 {
@@ -114,7 +135,7 @@ void out_zyh(struct term s0[])
 	fprintf(fp, "全部学生的总评平均分为%.2f分\n", average);
 	fclose(fp);
 }
-void find_cmy(struct term s0[])
+void find_zyh(struct term s0[])
 {
 	int i, p;
 	int a = 0;
@@ -124,13 +145,29 @@ void find_cmy(struct term s0[])
 	do
 	{
 
-		printf("请选择你想要查询方式\n");
-		printf("输入1 以学号方式查询\n");
-		printf("输入2 以姓名方式查询\n");
-		scanf("%d", &p);
+		
+		while(1){
+			printf("请选择你想要查询方式\n");
+			printf("输入1 以学号方式查询\n");
+			printf("输入2 以姓名方式查询\n");
+			if(!scanf("%d", &p)){
+				system("clear");
+				printf("请重新输入\n");
+				fflush(stdin); 
+
+			}
+			else{
+				system("clear");
+				break;
+			}
+
+		}
+		
+		
 		switch (p)
 		{
 		case 1:
+			system("clear");
 			printf("请输入要查询学生的学号:");
 			scanf("%ld", &findnum);
 
@@ -157,6 +194,7 @@ void find_cmy(struct term s0[])
 			break;
 
 		case 2:
+			system("clear");
 			printf("请输入要查询学生的姓名:\n");
 			scanf("%s", name);
 			for (i = 0; i < n; i++)
@@ -165,11 +203,11 @@ void find_cmy(struct term s0[])
 				{
 
 					printf("学号:");
-					printf("%ld\n", s0[i].num);
+					printf("%ld\n",s0[i].num);
 					printf("姓名:");
-					printf("%s\n", s0[i].name);
+					printf("%s\n",s0[i].name);
 					printf("总评得分");
-					printf("%.0f\n", s0[i].finalScore);
+					printf("%.0f\n",s0[i].finalScore);
 					a = 1;
 					break;
 				}
