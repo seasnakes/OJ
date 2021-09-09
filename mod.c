@@ -28,12 +28,12 @@ void load_zyh(struct term s0[], struct student stu[])
 		
 		system("clear");
 		printf("请重新输入：\n");
-		fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
+		fflush(stdin); 
 		
 	}
 	else {
 		system("clear");
-		fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
+		fflush(stdin); 
 		break;
 	
 	}
@@ -46,7 +46,7 @@ void load_zyh(struct term s0[], struct student stu[])
 		printf("请输入第%d次OJ实验成绩文档的路径\n",i+1);
 		char path[200];
 		scanf("%s",path); //读取路径
-		fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
+		fflush(stdin); 
 		FILE *fp = fopen(path, "r");
 		if (fp == NULL)
 		{
@@ -91,7 +91,7 @@ void final_score_zyh(struct term s0[])
 	{	
 		printf("请输入第%d次OJ实验占总期末总评比例（%%）\n",b+1);
 		scanf("%d", &p[b]);
-		fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
+		fflush(stdin); 
 	}	
 		
 		for (b = 0; b < n; b++)
@@ -210,7 +210,7 @@ void find_zyh(struct term s0[])
 
 			break;
 		}
-		fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
+		fflush(stdin); 
 		printf("是否继续查询？y/n\n");
 		scanf("%c",&c);
 
