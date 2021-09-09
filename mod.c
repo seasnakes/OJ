@@ -91,6 +91,7 @@ void final_score_zyh(struct term s0[])
 	{	
 		printf("请输入第%d次OJ实验占总期末总评比例（%%）\n",b+1);
 		scanf("%d", &p[b]);
+		fflush(stdin); //清除标准输入设备（一般是键盘）的缓存
 	}	
 		
 		for (b = 0; b < n; b++)
@@ -146,22 +147,12 @@ void find_zyh(struct term s0[])
 	{
 
 		
-		while(1){
+		
 			printf("请选择你想要查询方式\n");
 			printf("输入1 以学号方式查询\n");
 			printf("输入2 以姓名方式查询\n");
-			if(!scanf("%d", &p)){
-				system("clear");
-				printf("请重新输入\n");
-				fflush(stdin); 
-
-			}
-			else{
-				system("clear");
-				break;
-			}
-
-		}
+			scanf("%d", &p);
+			fflush(stdin);
 		
 		
 		switch (p)
