@@ -211,8 +211,8 @@ void find_zyh(struct term s0[])
 			break;
 		}
 		fflush(stdin); 
-		printf("是否继续查询？y/n\n");
+		printf("是否继续查询？输入y以继续，否则将结束程序\n");
 		scanf("%c",&c);
 
-	} while (c!='n');
+	} while (c=='y');
 }
