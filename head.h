@@ -16,21 +16,18 @@ struct student {
 
 
 struct term{
-	long num;
+	long num;		//学号
 	char name[50]; //姓名
 	int score[30];//按照实验先后顺序依次储存各个学生所有oj实验成绩
 	double finalScore;//期末总评
-
-	
-
-
 };
 
 
-void input_zyh(struct term s0[]);
+void input_zyh(struct term s0[]);//读入包含班级学生信息文档
 void load_zyh(struct term s0[],struct student stu[]);
-void final_score_zyh(struct term s0[]);
-void average_zyh(struct term s0[]);
-void out_zyh(struct term s0[]);
-void find_zyh(struct term s0[]);
+//读入oj实验成绩文档并在调整后录入相应数据//
+void final_score_zyh(struct term s0[]);//计算期末总评
+void average_zyh(struct term s0[]);//计算班级oj总评平均分
+void out_zyh(struct term s0[]);//导出汇总文档
+void find_zyh(struct term s0[]);//查询学生总评
 

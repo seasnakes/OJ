@@ -19,40 +19,40 @@ void input_zyh(struct term s0[])
 
 void load_zyh(struct term s0[], struct student stu[])
 {
-	
+
 	int i, j, k = 0;
-	while(1){
-	printf("请输入本学期OJ实验个数\n");
-	if(!scanf("%d",&t))
-	{  
-		
-		system("clear");
-		printf("请重新输入：\n");
-		fflush(stdin); 
-		
-	}
-	else {
-		system("clear");
-		fflush(stdin); 
-		break;
-	
+	while (1)
+	{
+		printf("请输入本学期OJ实验个数\n");
+		if (!scanf("%d", &t))
+		{
+
+			system("clear");
+			printf("请重新输入：\n");
+			fflush(stdin);
+		}
+		else
+		{
+			system("clear");
+			fflush(stdin);
+			break;
+		}
 	}
 
-    }
-	
 	for (i = 0; i < t; i++)
 	{
 		max = 0;
-		printf("请输入第%d次OJ实验成绩文档的路径\n",i+1);
+		printf("请输入第%d次OJ实验成绩文档的路径\n", i + 1);
 		char path[200];
-		scanf("%s",path); //读取路径
-		fflush(stdin); 
+		scanf("%s", path); //读取路径
+		fflush(stdin);
 		FILE *fp = fopen(path, "r");
 		if (fp == NULL)
 		{
 			puts("error");
 		}
-		while (fscanf(fp, "%d %ld %s %d %d", &stu[max].rank, &stu[max].num, stu[max].name, &stu[max].sole, &stu[max].mark) != EOF)
+		while (fscanf(fp, "%d %ld %s %d %d", &stu[max].rank, &stu[max].num,
+		 stu[max].name, &stu[max].sole, &stu[max].mark) != EOF)
 		{
 			max++;
 		}
@@ -146,15 +146,12 @@ void find_zyh(struct term s0[])
 	do
 	{
 
-		
-		
-			printf("请选择你想要查询方式\n");
-			printf("输入1 以学号方式查询\n");
-			printf("输入2 以姓名方式查询\n");
-			scanf("%d", &p);
-			fflush(stdin);
-		
-		
+		printf("请选择你想要查询方式\n");
+		printf("输入1 以学号方式查询\n");
+		printf("输入2 以姓名方式查询\n");
+		scanf("%d", &p);
+		fflush(stdin);
+
 		switch (p)
 		{
 		case 1:
@@ -178,10 +175,8 @@ void find_zyh(struct term s0[])
 			}
 			if (a == 0)
 			{
-				printf("没有该学生学号!!!\n");
+			printf("没有该学生学号!!!\n");
 			}
-
-			
 			break;
 
 		case 2:
@@ -194,25 +189,25 @@ void find_zyh(struct term s0[])
 				{
 
 					printf("学号:");
-					printf("%ld\n",s0[i].num);
+					printf("%ld\n", s0[i].num);
 					printf("姓名:");
-					printf("%s\n",s0[i].name);
+					printf("%s\n", s0[i].name);
 					printf("总评得分");
-					printf("%.0f\n",s0[i].finalScore);
+					printf("%.0f\n", s0[i].finalScore);
 					a = 1;
 					break;
 				}
 			}
 			if (a == 0)
 			{
-				printf("没有该学生学号!!!\n");
+				printf("没有该学生姓名!!!\n");
 			}
 
 			break;
 		}
-		fflush(stdin); 
+		fflush(stdin);
 		printf("是否继续查询？输入y以继续，否则将结束程序\n");
-		scanf("%c",&c);
+		scanf("%c", &c);
 
-	} while (c=='y');
+	} while (c == 'y');
 }
